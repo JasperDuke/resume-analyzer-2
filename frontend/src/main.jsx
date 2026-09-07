@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { CheckCircle2, ChevronRight, CircleAlert, FileText, KeyRound, LoaderCircle, LockKeyhole, Settings2, Sparkles, UploadCloud, X } from 'lucide-react';
+import { CheckCircle2, ChevronRight, CircleAlert, FileText, KeyRound, LoaderCircle, LockKeyhole, Settings2, UploadCloud, X } from 'lucide-react';
 import './styles.css';
 
 const CONFIG_KEY = 'resunizer-config';
@@ -71,7 +71,7 @@ function App() {
   const canAnalyze = Boolean(resume && jobDescription.trim() && configured) && !['starting', 'analyzing'].includes(status);
 
   return <div className="app-shell">
-    <header className="topbar"><a className="brand" href="/"><span className="brand-mark"><Sparkles size={17}/></span><span>Resunizer</span></a><div className="header-actions"><span className={`config-state ${configured ? 'ready' : ''}`}><span className="status-dot" />{configured ? 'Configured' : 'Not configured'}</span><button className="button button-quiet" onClick={openConfig}><Settings2 size={16}/> Configuration</button></div></header>
+    <header className="topbar"><a className="brand" href="/"><span className="brand-mark"><img src="./resunizer-icon.png" alt="" style={{height:'100%',width:'100%',objectFit:'cover'}} /></span><span>Resunizer</span></a><div className="header-actions"><span className={`config-state ${configured ? 'ready' : ''}`}><span className="status-dot" />{configured ? 'Configured' : 'Not configured'}</span><button className="button button-quiet" onClick={openConfig}><Settings2 size={16}/> Configuration</button></div></header>
     <main className="main-content">
       {status === 'completed' && analysis ? <ResultView result={analysis} onReset={() => { setStatus('idle'); setAnalysis(null); setError(''); }} /> : status === 'analyzing' || status === 'starting' ? <Analyzing /> : <>
         <section className="intro"><div className="eyebrow"><span /> CAREER TOOLKIT</div><h1>Find the signal<br/><i>in your resume.</i></h1><p>See how your experience lines up with the role you want next. Get a clear, honest analysis in minutes.</p></section>
