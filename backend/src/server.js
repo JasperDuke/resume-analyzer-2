@@ -118,7 +118,7 @@ app.get('/api/openapi.json', (_req, res) => res.json(openApi));
 
 const openApi = {
   openapi: '3.0.3',
-  info: { title: 'Resume Analyzer Callback API', version: '1.0.0', description: 'Receives completed resume analysis results from an external Atenxion agent.' },
+  info: { title: 'Resunizer Callback API', version: '1.0.0', description: 'Receives completed resume analysis results from an external Atenxion agent.' },
   servers: [{ url: '/' }],
   paths: {
     '/api/analysis/result': {
@@ -144,4 +144,4 @@ if (fs.existsSync(frontendDist)) { app.use(express.static(frontendDist)); app.us
 
 app.use((error, _req, res, _next) => res.status(500).json({ success: false, error: 'Something went wrong.' }));
 const port = Number(process.env.PORT || 3000);
-app.listen(port, '0.0.0.0', () => console.log(`Resume Analyzer listening on ${port}`));
+app.listen(port, '0.0.0.0', () => console.log(`Resunizer listening on ${port}`));
